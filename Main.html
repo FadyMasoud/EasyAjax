@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Main</title>
+</head>
+<body>
+	<h1>Main</h1>
+	<p>This is the main page.</p>
+	<button onclick="ClickMe2()">Click me!</button>
+	<p id="output"></p>
+	<div id="jquery-content-test"></div>
+
+
+	<button data-page="demoONe.html">Go to Demo One</button>
+	<button data-page="demoTwo.html">Go to Demo Two</button>
+
+	<button>Go to Auth</button>
+
+	<script src="MainTest.js"></script>
+	<script src="MainAjax.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+	<script>
+		function ClickMe2(){
+			var myRequest = new XMLHttpRequest();
+			// console.log(myRequest);
+        myRequest.onreadystatechange = function(){
+			// console.log(this.status);
+			if(this.readyState === 4 && this.status===200){
+				// var myData = JSON.parse(this.responseText);
+				// for(var i=0; i<myData.length; i++){
+				// 	document.getElementById('output').innerHTML += myData[i] + "<br>";
+				// 	console.log(myData[i]);
+				// }
+				console.log(this.responseText);
+				// document.getElementById('output').innerHTML = this.responseText;
+			}
+
+		}
+
+
+		// myRequest.open("GET","object.json",true);
+		myRequest.open("GET","auth.php?name=John",true);
+		myRequest.send();
+		}
+		
+	</script>
+
+<script>
+
+
+  
+   // Load a specific file Test.txt into a div with id jquery-content-test as a Target using jQuery's load() method.
+	// $(function(){
+	// 	$("#jquery-content-test").load("Test.txt");
+	// })
+
+
+
+	// FIrst strycture to load in a div jquery-content-test as a taregt a specific file demoONe.html 
+	// with a callback function to check the status of the request and log the response, status, and xhr object to the console.
+	// $(function(){
+	// 	$("#jquery-content-test").load("demoONe.html" , function(responseTxt, statusTxt, xhr){
+	// 		console.log(responseTxt) , console.log(statusTxt) , console.log(xhr);
+	// 		// if(statusTxt == "success")
+	// 		// 	alert("External content loaded successfully!");
+	// 		// if(statusTxt == "error")
+	// 		// 	alert("Error: " + xhr.status + ": " + xhr.statusText);
+	// 	});
+	// })
+
+	// Second structure to load in a div jquery-content-test as a target a specific file demoONe.html
+	// with a callback function to check the status of the request and log the response, status
+	// and xhr object to the console when a button is clicked. The button has a data-page attribute that specifies the file to load.
+
+
+	// $(function(){
+	// 	$("button").on("click", function(){
+	// 		var page = $(this).data("page");
+	// 		$("#jquery-content-test").load(page, function(responseTxt, statusTxt, xhr){
+	// 			console.log(responseTxt) , console.log(statusTxt) , console.log(xhr);
+	// 			// if(statusTxt == "success")
+	// 			// 	alert("External content loaded successfully!");
+	// 			// if(statusTxt == "error")
+	// 			// 	alert("Error: " + xhr.status + ": " + xhr.statusText);
+	// 		});
+	// 	})
+	// })
+
+
+	// $(function(){
+	// 	$("button").on("click", function(){
+	// 		$.get('auth.php?name=admin&password=1234', function(Data, Status, Xhr){
+	// 			console.log(Data) , console.log(Status) , console.log(Xhr);
+	// 		})
+	// 	})
+	// })
+
+//    $(function(){
+// 			$("button").on("click", function(){
+// 			$.post('auth.php', {name: "admin", password: "1234"}, function(Data, Status, Xhr){
+// 				console.log(Data) , console.log(Status) , console.log(Xhr);
+// 			})
+// 		})
+//    })
+
+$(function(){
+
+$("button").on("click", function(){
+	$.ajax({
+	type: "POST",
+	url: "comments.php",
+	data: {comment: "This is a comment from the main page."},
+	success: function(Data, Status, Xhr){
+		console.log("Request successful");
+
+		console.log(Data) , console.log(Status) , console.log(Xhr);
+	}
+	,error: function(Xhr, Status, Error){
+		console.log("Request failed");
+
+		console.log(Xhr) , console.log(Status) , console.log(Error);
+	}
+	,complete: function(Xhr, Status){
+		console.log("Request completed");
+		console.log(Xhr) , console.log(Status);
+	}
+})
+})
+})
+
+
+
+
+	// $(function(){
+	// 	$.ajax({
+	// 		url: "auth.php",
+	// 		type: "GET",
+	// 		data: {name: "John"},
+	// 		success: function(response){
+	// 			$("#jquery-content-test").html(response);
+	// 		}
+	// 		,
+	// 	});
+	// });
+
+
+</script>
+</body>
+</html>
