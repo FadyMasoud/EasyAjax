@@ -1,5 +1,7 @@
 # EasyAjax
 
+🌐 **English** | [العربية](README.ar.md)
+
 A small learning project that shows **how AJAX works**: first with plain JavaScript (`XMLHttpRequest`, `fetch`, Promises, `async/await`), then with **jQuery** (`load`, `$.get`, `$.post`, `$.ajax`). PHP files act as a tiny back end.
 
 ---
